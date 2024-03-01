@@ -31,11 +31,15 @@ function App() {
         setLoader(true);
 
         const data = await fetchPhotos(query, page);
+
         setPhotos(prevPhotos => {
-          return [...prevPhotos, ...data.data]
+          return [...prevPhotos, ...data.data.results]
         });
 
-        setVisibleBtn(true);
+        const totalPages = data.data.total_pages;
+        if (totalPages > page) {
+          setVisibleBtn(true);
+        }
 
       } catch (e) {
         setError(true);
