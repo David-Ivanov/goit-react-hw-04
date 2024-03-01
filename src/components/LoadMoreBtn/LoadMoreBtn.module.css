@@ -1,0 +1,16 @@
+.btn {
+    display: block;
+
+    padding: 0;
+    margin-right: auto;
+    margin-left: auto;
+
+    height: 30px;
+    width: 150px;
+
+    border: none;
+    border-radius: 2px;
+
+    color: white;
+    background-color: rgb(52, 52, 174);
+}
