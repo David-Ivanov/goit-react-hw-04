@@ -7,6 +7,7 @@ import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import Loader from '../Loader/Loader';
 import ImageModal from '../ImageModal/ImageModal';
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
   const [photos, setPhotos] = useState([]);
@@ -51,7 +52,10 @@ function App() {
   }, [query, page]);
 
   const handleSearch = (newQuery) => {
-    if (newQuery === '') return
+    if (newQuery === '') {
+      toast.error('Please, enter something');
+      return
+    }
     setPhotos([]);
     setPage(1);
     setQuery(newQuery);
@@ -88,6 +92,9 @@ function App() {
       {error && <ErrorMessage />}
       {loader && <Loader />}
       <ImageModal isOpen={modalIsOpen} toggle={modalToggle} data={modalData} />
+      <Toaster
+        position="top-right"
+      />
     </>
   )
 }
